@@ -9,3 +9,4 @@ sleep 2
 echo -e "\nOk, apply time\n"
 bundle exec cap puppet:go HOSTFILTER=bpsyd07-dvmh-radius-01.inf.bulletproof.net options="--tags freeradius" role=syd07 apply=true 
 bundle exec cap puppet:go HOSTFILTER=bpsyd07-dvmh-radius-02.inf.bulletproof.net options="--tags freeradius" role=syd07 apply=true
+echo -e "\nDone\nEnsure there are no errors in above output\n"
