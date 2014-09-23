@@ -1,4 +1,5 @@
 #!/bin/bash
+# Dynamic or custom IP addition to AWS Security group script - By Tim Corcoran 
 # A simple script to add your DYNAMIC external IP address to an AWS Security group
 
 DYNIP=`dig +short myip.opendns.com @resolver1.opendns.com`
