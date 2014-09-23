@@ -1,6 +1,8 @@
 #!/bin/bash
 # Dynamic or custom IP addition to AWS Security group script - By Tim Corcoran
+# Updated/cleaned by Nerdyness
 # A simple script to add your DYNAMIC external IP address to an AWS Security group
+
 
 IP="`dig +short myip.opendns.com @resolver1.opendns.com`"
 echo -e "\nWould you like to use your current external IP, $IP? [Y/n]\n"
