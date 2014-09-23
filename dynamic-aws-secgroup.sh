@@ -1,11 +1,24 @@
 #!/bin/bash
 # A simple script to add your DYNAMIC external IP address to an AWS Security group
 
-# Get your current external IP address
-dig +short myip.opendns.com @resolver1.opendns.com
+DYNIP=`dig +short myip.opendns.com @resolver1.opendns.com`
+echo -e "\nWould you like to use your current external IP, $DYNIP? [y/n]\n"
+read q1
 
-# Example of a rule to add rule
-aws ec2 authorize-security-group-ingress --group-id sg-903004f8 --protocol tcp --port 3389 --cidr 203.0.113.0/24
+if [ $q1 == n ] ; then
+  echo -e "\nWhat IP would you like to add?\n"
+  read custip
+fi
 
-# Example of a rule to remove rule
-aws ec2 authorize-security-group-egress --group-id sg-903004f8 --protocol tcp --port 3389 --cidr 203.0.113.0/24
+echo -e "\nWhat is the security group id you would like to add your IP to?\n"
+read secgroupid
+
+echo -e "\nWhat port would you like to add access for?\n"
+read port
+
+if [ $q1 == y ] ; then
+  echo -e "\n aws ec2 authorize-security-group-ingress --group-id $secgroupid --protocol tcp --port $port --cidr $DYNIP/32 \n"
+else
+  echo -e "\n aws ec2 authorize-security-group-ingress --group-id $secgroupid --protocol tcp --port $port --cidr $custip/32 \n"
+fi
+
