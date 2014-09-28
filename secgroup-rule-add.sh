@@ -13,7 +13,7 @@
 function arw { $(aws_sts.sh $CUSTID -e -w); }
 export PATH=~/repos/assemblage/aws:${PATH}
 
-echo -e "\nThis script adds an IP address to an AWS Security Group. It uses aws_sts.sh to set customer Access Key details.\n"
+echo -e "\nThis script adds an IP address to an AWS Security Group for inbound traffic. It uses aws_sts.sh to set customer Access Key details.\n"
 
 if [ ! -z $1 ]; then
   CUSTID=$1
@@ -50,7 +50,7 @@ else
   read PORT
 fi
 
-echo -e "aws ec2 authorize-security-group-ingress --group-id $SECGROUPID --protocol tcp --port $PORT --cidr $IP/32"
+aws ec2 authorize-security-group-ingress --group-id $SECGROUPID --protocol tcp --port $PORT --cidr $IP/32
 
 if [ "$?" == "0" ]; then
   echo -e "\nSuccess! Printing current list of rules in $SECGROUPID\n"
@@ -61,4 +61,3 @@ else
 fi
 
 exit
-
