@@ -35,7 +35,7 @@ done < "/volume2/Data/samplekillerdir.txt"
 
 cat /volume2/Data/samplekillerdir.txt >> /volume2/Data/samplekiller.txt
 rm /volume2/Data/samplekillerdir.txt
-mv /volume2/Data/samplekiller.txt /volume2/Data/Misc/Logs/samplekiller/"`date +%d%m%Y_%H`_sampleskilled.txt";
+mv /volume2/Data/samplekiller.txt /volume2/Data/Misc/Logs/samplekiller/"`date +%d%m%Y_%H-%M`_sampleskilled.txt";
 
 exit
 
