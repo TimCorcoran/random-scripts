@@ -1,5 +1,5 @@
 #!/bin/bash
-# Simple script to start/stop headless vms in dropbox - By Tim Corcoran
+# Simple script to start/stop headless vms in virtualbox - By Tim Corcoran
 
 if [ "$1" = "start" ]; then
   vboxmanage startvm $2 --type headless
