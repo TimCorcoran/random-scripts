@@ -1,12 +1,22 @@
 #!/bin/bash
-# Simple script to start/stop headless vms in virtualbox - By Tim Corcoran
+# Simple script to spin up new servers on ESX1
 
-if [ "$1" = "start" ]; then
-  vboxmanage startvm $2 --type headless
+
+if [ ! -z $1 ]; then
+  NAME=$1
 else
-
-if [ "$1" = 'stop' ]; then
-  vboxmanage controlvm $2 poweroff
-fi
+  echo -e "\nNew Server Name?\n"
+  read NAME
 fi
 
+if [ ! -z $2 ]; then
+  VLAN=$2
+else
+  echo -e "\nWhich VLAN? (For VLAN1 enter LAG)\n"
+  read VLAN
+fi
+
+echo -e "\nProduction? or Testing\n"
+  read RGROUP
+
+/Applications/VMware\ OVF\ Tool/ovftool -ds=LOCAL-DS --net:"LAG=$VLAN" --name=$NAME --powerOn --X:waitForIp "https://ovfdeploy:Quack123Quack!@esx1.home.timmyc.com.au/folder/Ubuntu%2fUbuntuOVF/UbuntuOVF.ovf?dcPath=ha%252ddatacenter&dsName=LOCAL%252dDS" "vi://ovfdeploy:Quack123Quack!@esx1.home.timmyc.com.au/$RGROUP/"
