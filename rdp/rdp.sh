@@ -1,7 +1,7 @@
 #! /bin/bash
 templaterdp='/Users/beltim/Dropbox/template.rdp'
 temporaryRDP='/Users/beltim/Dropbox/temp.rdp'
-command="/Applications/Microsoft Remote Desktop.app/Contents/MacOS/Microsoft Remote Desktop"
+command="/Applications/MicrosoftRemoteDesktop.app/Contents/MacOS/Microsoft Remote Desktop"
 hostname=${1}
 
 cp -f ${templaterdp} ${temporaryRDP}
