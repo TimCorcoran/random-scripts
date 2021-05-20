@@ -1,7 +1,7 @@
 #! /bin/bash
-rdpTemplateFile='/Users/beltim/Dropbox/template.rdp'
-rdpTempRDP='/Users/beltim/Dropbox/temp.rdp'
-rdpRunCommand="/Applications/Microsoft Remote Desktop.app/Contents/MacOS/Microsoft Remote Desktop"
+rdpTemplateFile='/Users/beltim/tc-repos/random-scripts/rdp/template.rdp'
+rdpTempRDP='/Users/beltim/tc-repos/random-scripts/rdp/temp.rdp'
+rdpRunCommand="/Applications/Microsoft\ Remote\ Desktop\ Beta.app/Contents/MacOS/Microsoft\ Remote\ Desktop\ Beta"
 rdpHost=${1}
 
 if [ "${2}" = "/console" ] ; then
